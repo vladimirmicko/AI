@@ -25,17 +25,14 @@ public class Main {
 		if (supervised) {
 			System.out.println("\n\n---------------------------------------Testing supervised backpropagation");
 			int numberOfHits = 0;
-			for (int y = 0; y < bp.getTestingDataset().length; y++) {
+			for (int y = 0; y < bp.getTestingDataset().length-1; y++) {
 				bp.classify(bp.getTestingDataset()[y]);
 
-				int targetClass = (int)Math.round(bp.getTestingDataset()[y][64]);
-				int selectedClass = Utility
-						.elementWithMaxValueInArray(bp.getNodes()[bp.getNumberOfLayerNodes().length - 1]);
+				int targetClass = Utility.elementWithMaxValueInArray(bp.getTestingTarget()[y]);
+				int selectedClass = Utility.elementWithMaxValueInArray(bp.getNodes()[bp.getNumberOfLayerNodes().length - 1]);
 				if (targetClass == selectedClass)
 					numberOfHits++;
-				System.out.println("" + y + ": " + bp.getTestingDataset()[y][4] + " " + bp.getTestingDataset()[y][5]
-						+ " " + bp.getTestingDataset()[y][6] + "  ---   " + " Target: " + targetClass
-						+ "   Estimation: " + selectedClass);
+				System.out.println("" + y + ": " + " Target: " + targetClass + "   Estimation: " + selectedClass);
 			}
 			System.out.println("Number of rows: " + bp.getTestingDataset().length);
 			System.out.println("Number of hits: " + numberOfHits);

@@ -26,6 +26,8 @@ public class BpAnn {
 	private double rowError;
 	private double epochError;
 	
+	private double[][] trainingTarget;
+	private double[][] testingTarget;
 
 	public BpAnn() {
 	}
@@ -57,7 +59,12 @@ public class BpAnn {
 		
 		if (supervised) target = createTarget(trainingDataset);
 		else target = createTargetAA(trainingDataset);
+		
+		trainingTarget = createTarget(trainingDataset);
+		testingTarget = createTarget(testingDataset);
 	}
+
+
 
 	public double[][] createTarget(double[][] data) {
 		target = new double[trainingDataset.length][trainingDataset[0].length - numberOfLayerNodes[0]];
@@ -394,6 +401,22 @@ public class BpAnn {
 
 	public void setEpochError(double epochError) {
 		this.epochError = epochError;
+	}
+	
+	public double[][] getTrainingTarget() {
+		return trainingTarget;
+	}
+
+	public void setTrainingTarget(double[][] trainingTarget) {
+		this.trainingTarget = trainingTarget;
+	}
+
+	public double[][] getTestingTarget() {
+		return testingTarget;
+	}
+
+	public void setTestingTarget(double[][] testingTarget) {
+		this.testingTarget = testingTarget;
 	}
 	
 }
