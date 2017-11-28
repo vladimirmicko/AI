@@ -11,7 +11,7 @@ public class Main {
 		System.out.println("Backpropagation ANN");
 		boolean supervised = true;
 		BpAnn bp = new BpAnn("G:/Eclipse - STS/ArtificialIntelligence/Resources/DigitsWithTargets.csv", 1797, 65,
-				0.5, new int[] { 64, 64, 64, 10 }, 0.5, supervised);
+				0.5, new int[] { 64, 64, 32, 1 }, 0.01, supervised);
 		System.out.println("\n\nTesting dataset");
 		Utility.printMatrix(bp.getTestingDataset());
 		
@@ -19,7 +19,7 @@ public class Main {
 		Utility.printMatrix(bp.getTrainingDataset());
 
 		System.out.println("\n\n---------------------------------------Training");
-		bp.training(500);
+		bp.training(1500);
 
 		
 		if (supervised) {
@@ -28,8 +28,10 @@ public class Main {
 			for (int y = 0; y < bp.getTestingDataset().length-1; y++) {
 				bp.classify(bp.getTestingDataset()[y]);
 
-				int targetClass = Utility.elementWithMaxValueInArray(bp.getTestingTarget()[y]);
-				int selectedClass = Utility.elementWithMaxValueInArray(bp.getNodes()[bp.getNumberOfLayerNodes().length - 1]);
+				//int targetClass = Utility.elementWithMaxValueInArray(bp.getTestingTarget()[y]);
+				//int selectedClass = Utility.elementWithMaxValueInArray(bp.getNodes()[bp.getNumberOfLayerNodes().length - 1]);
+				int targetClass = (int)Math.round(bp.getTestingTarget()[y][0]);
+				int selectedClass = (int)Math.round(bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][0]);
 				if (targetClass == selectedClass)
 					numberOfHits++;
 				System.out.println("" + y + ": " + " Target: " + targetClass + "   Estimation: " + selectedClass);

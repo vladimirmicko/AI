@@ -88,7 +88,7 @@ public class Utility {
 	}
 
 	public static double[][][] createTrainingAndTestingDataset(double[][] dataset, double trainingTestRatio) {
-		dataset=unfoldTargetInDataset(dataset);
+		//dataset=unfoldTargetInDataset(dataset);
 		int trainingSetRows = (int) Math.floor(dataset.length * trainingTestRatio);
 		int testingSetRows = dataset.length - trainingSetRows;
 		// double[][] completeDataset = copyMatrix(dataset);
