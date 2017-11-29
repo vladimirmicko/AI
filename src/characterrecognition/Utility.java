@@ -58,6 +58,23 @@ public class Utility {
 		}
 	}
 
+	public static double[][] binarizeMatrix(double[][] oldMatrix, double threshold, int endRow, int endCol) {
+		double[][] newMatrix = new double[oldMatrix.length][oldMatrix[0].length];
+		int a=0;
+		for (int y = 0; y < oldMatrix.length; y++) {
+			for (int x = 0; x < oldMatrix[0].length; x++) {
+				if(y<endRow && x<endCol){
+					newMatrix[y][x] = (oldMatrix[y][x] >= threshold) ? 1:0;
+				}
+				else{
+					newMatrix[y][x] = (double) oldMatrix[y][x];
+				}
+			}
+		}
+		return newMatrix;
+	}
+	
+	
 	public static double[][] copyMatrix(double[][] oldMatrix) {
 		double[][] newMatrix = new double[oldMatrix.length][oldMatrix[0].length];
 
@@ -88,6 +105,7 @@ public class Utility {
 	}
 
 	public static double[][][] createTrainingAndTestingDataset(double[][] dataset, double trainingTestRatio) {
+		dataset=binarizeMatrix(dataset, 8, dataset.length, dataset[0].length-1);
 		dataset=unfoldTargetInDataset(dataset);
 		int trainingSetRows = (int) Math.floor(dataset.length * trainingTestRatio);
 		int testingSetRows = dataset.length - trainingSetRows;
@@ -97,6 +115,7 @@ public class Utility {
 
 		for (int y = 0; y < testingSetRows; y++) {
 			int rowNumber = (int) Math.floor(Math.random() * completeDataset.length);
+			//int rowNumber=y;
 			testingDataset[y] = completeDataset[rowNumber];
 			completeDataset = Utility.removeRowFromMatrix(completeDataset, rowNumber);
 		}
@@ -105,8 +124,8 @@ public class Utility {
 		result[0] = trainingDataset;
 		result[1] = testingDataset;
 		
-		result[0] = dataset;
-		result[1] = dataset;
+//		result[0] = dataset;
+//		result[1] = dataset;
 		
 		return result;
 	}
