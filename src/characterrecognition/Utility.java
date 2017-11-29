@@ -88,23 +88,22 @@ public class Utility {
 	}
 
 	public static double[][][] createTrainingAndTestingDataset(double[][] dataset, double trainingTestRatio) {
-		//dataset=unfoldTargetInDataset(dataset);
-//		int trainingSetRows = (int) Math.floor(dataset.length * trainingTestRatio);
-//		int testingSetRows = dataset.length - trainingSetRows;
-//		double[][] completeDataset = copyMatrix(dataset);
-//		double[][] completeDataset = dataset;
-//		double[][] trainingDataset = new double[trainingSetRows][dataset[0].length];
-//		double[][] testingDataset = new double[testingSetRows][dataset[0].length];
-//
-//		for (int y = 0; y < testingSetRows; y++) {
-//			int rowNumber = (int) Math.floor(Math.random() * completeDataset.length);
-//			testingDataset[y] = completeDataset[rowNumber];
-//			completeDataset = Utility.removeRowFromMatrix(completeDataset, rowNumber);
-//		}
-//		trainingDataset = completeDataset;
+		dataset=unfoldTargetInDataset(dataset);
+		int trainingSetRows = (int) Math.floor(dataset.length * trainingTestRatio);
+		int testingSetRows = dataset.length - trainingSetRows;
+		double[][] completeDataset = copyMatrix(dataset);
+		double[][] trainingDataset = new double[trainingSetRows][dataset[0].length];
+		double[][] testingDataset = new double[testingSetRows][dataset[0].length];
+
+		for (int y = 0; y < testingSetRows; y++) {
+			int rowNumber = (int) Math.floor(Math.random() * completeDataset.length);
+			testingDataset[y] = completeDataset[rowNumber];
+			completeDataset = Utility.removeRowFromMatrix(completeDataset, rowNumber);
+		}
+		trainingDataset = completeDataset;
 		double[][][] result = new double[2][dataset.length][dataset[0].length];
-//		result[0] = trainingDataset;
-//		result[1] = testingDataset;
+		result[0] = trainingDataset;
+		result[1] = testingDataset;
 		
 		result[0] = dataset;
 		result[1] = dataset;
