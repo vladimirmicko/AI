@@ -10,16 +10,16 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("Backpropagation ANN");
 		boolean supervised = true;
-		BpAnn bp = new BpAnn("G:/Eclipse - STS/ArtificialIntelligence/Resources/DigitsWithTargets.csv", 100, 65,
-				0.9, new int[] { 64, 64, 10 }, 0.01, supervised);
-		System.out.println("\n\nTesting dataset");
-		Utility.printMatrix(bp.getTestingDataset());
-		
-		System.out.println("\n\nTraining dataset");
-		Utility.printMatrix(bp.getTrainingDataset());
+		BpAnn bp = new BpAnn("G:/Eclipse - STS/ArtificialIntelligence/Resources/DigitsWithTargets.csv", 1797, 65,
+				0.8, new int[] { 64, 64, 10 }, 0.01, supervised);
+//		System.out.println("\n\nTesting dataset");
+//		Utility.printMatrix(bp.getTestingDataset());
+//		
+//		System.out.println("\n\nTraining dataset");
+//		Utility.printMatrix(bp.getTrainingDataset());
 
 		System.out.println("\n\n---------------------------------------Training");
-		bp.training(10000);
+		bp.training(100);
 
 		
 		if (supervised) {
