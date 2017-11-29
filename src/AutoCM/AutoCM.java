@@ -1,6 +1,6 @@
 package AutoCM;
 
-import backpropagation.Utility;
+import utility.Utility;
 
 public class AutoCM {
 

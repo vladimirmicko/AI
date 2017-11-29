@@ -1,6 +1,6 @@
 package priorprobability;
 
-import backpropagation.Utility;
+import utility.Utility;
 
 public class PriorProbability {
 

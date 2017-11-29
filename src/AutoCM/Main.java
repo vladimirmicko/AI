@@ -1,6 +1,5 @@
 package AutoCM;
 
-import backpropagation.Utility;
 import similaritymatrix.Matrica;
 
 public class Main {
