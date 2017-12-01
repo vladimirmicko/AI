@@ -124,8 +124,8 @@ public class Utility {
 		result[0] = trainingDataset;
 		result[1] = testingDataset;
 		
-//		result[0] = dataset;
-//		result[1] = dataset;
+		result[0] = dataset;
+		result[1] = dataset;
 		
 		return result;
 	}

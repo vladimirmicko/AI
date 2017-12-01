@@ -10,8 +10,8 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("Backpropagation ANN");
 		boolean supervised = false;
-		BpAnn bp = new BpAnn("G:/Eclipse - STS/ArtificialIntelligence/Resources/iris(4x3x150).csv", 150, 7,
-				0.01, new int[] { 4, 4, 4 }, 0.5, supervised);
+		BpAnn bp = new BpAnn("C:/MyDocuments/EclipseNeon/ArtificialIntelligence/Resources/iris(4x3x150).csv", 150, 7,
+				0.5, new int[] { 4, 4, 4 }, 0.1, supervised);
 		// System.out.println("\n\nTesting dataset");
 		// Utility.printMatrix(bp.getTestingDataset());
 		
@@ -19,7 +19,7 @@ public class Main {
 		//Utility.printMatrix(bp.getTrainingDataset());
 
 		System.out.println("\n\n---------------------------------------Training");
-		bp.training(500);
+		bp.training(1000);
 
 		
 		if (supervised) {

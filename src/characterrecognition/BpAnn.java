@@ -192,11 +192,11 @@ public class BpAnn {
 			sumOutputs = sumOutputs + Math.pow(Math.E, nodes[layerNumber][x]);
 		}
 
-//		if(supervised){
-//			for (int x = 0; x < numberOfLayerNodes[layerNumber]; x++) {
-//				nodes[layerNumber][x] = Math.pow(Math.E, nodes[layerNumber][x]) / sumOutputs;
-//			}
-//		}
+		if(supervised){
+			for (int x = 0; x < numberOfLayerNodes[layerNumber]; x++) {
+				nodes[layerNumber][x] = Math.pow(Math.E, nodes[layerNumber][x]) / sumOutputs;
+			}
+		}
 	}
 
 	public void calculateErrors() {

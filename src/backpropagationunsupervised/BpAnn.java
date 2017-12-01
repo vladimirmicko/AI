@@ -37,7 +37,7 @@ public class BpAnn {
 		this.testTraingRatio = testTraingRatio;
 
 		dataset = Utility.loadDatasetFromFile(datasetFilename, datasetDimensionY, datasetDimensionX);
-		double[][][] sets = Utility.createTrainingAndTestingDataset(dataset, 0.5);
+		double[][][] sets = Utility.createTrainingAndTestingDataset(dataset, testTraingRatio);
 		trainingDataset = sets[0];
 		testingDataset = sets[1];
 	}
@@ -48,7 +48,7 @@ public class BpAnn {
 		this(datasetFilename, datasetDimensionY, datasetDimensionX, testTraingRatio);
 		this.numberOfLayerNodes = numberOfLayerNodes;
 		this.learningCoeffitient = learningCoeffitient;
-		supervised = supervised;
+		this.supervised = supervised;
 
 		this.populateNodesWithZeros();
 		this.populateWeightedSumsWithZeros();
