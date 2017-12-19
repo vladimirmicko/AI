@@ -1,0 +1,32 @@
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+import numpy as np
+from matplotlib import pyplot as plt
+import numpy as np
+from sklearn.datasets import load_iris
+
+data = load_iris()
+features = data.data
+feature_names = data.feature_names
+target = data.target
+target_names = data.target_names
+all=np.insert(features, 4, target, axis=1)
+print(all.shape)
+np.random.shuffle(all)
+training = all[:30]
+test = all[30:]
+randomized_training_features=training[:,:2]
+randomized_training_target=training[:,2]
+randomized_test_features=test[:,:2]
+randomized_test_target=test[:,2]
+
+print(training.shape)
+print(test.shape)
+x = KMeans(n_clusters = 3).fit(randomized_training_features)
+print(x.cluster_centers_)
+print(x.labels_)
+
+plt.scatter(randomized_training_features[x.labels_==0,0], randomized_training_features[x.labels_==0,1], c='r')
+plt.scatter(randomized_training_features[x.labels_==1,0], randomized_training_features[x.labels_==1,1], c='b')
+plt.scatter(randomized_training_features[x.labels_==2,0], randomized_training_features[x.labels_==2,1], c='g')
+plt.show()

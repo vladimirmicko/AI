@@ -1,0 +1,59 @@
+from sklearn.neural_network import MLPClassifier
+from sklearn import datasets
+from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score
+import numpy as np
+import matplotlib.pyplot as plt
+
+np.random.seed(1)
+np.set_printoptions(threshold=np.nan)
+
+digits = datasets.load_digits()
+X_digits = digits.data
+Y_digits = digits.target
+
+allSamples = np.arange(len(Y_digits))
+np.random.shuffle(allSamples)
+
+trainToTestRatio = 0.5
+trainX=X_digits[allSamples[0:int(trainToTestRatio*len(allSamples))]]
+trainY=Y_digits[allSamples[0:int(trainToTestRatio*len(allSamples))]]
+testX=X_digits[allSamples[int(trainToTestRatio*len(allSamples)):]]
+testY=Y_digits[allSamples[int(trainToTestRatio*len(allSamples)):]]
+
+ann = MLPClassifier(hidden_layer_sizes=(64,48), # one hidden layer with 80 neurons
+                    activation='logistic', # logistic sigmoid function
+                    solver='adam', # stochastic gradient descent
+                    alpha=1e-5, # regularization
+                    verbose=False,
+                    random_state=1,
+                    learning_rate_init = 0.002)
+
+ann.fit(trainX, trainY)
+prediction = ann.predict(testX)
+
+score = accuracy_score(testY, prediction)
+print("Accuracy score: %0.2f" % score)
+
+prediction_success=prediction-testY
+hits = np.asarray(np.where(prediction_success==0))[0,:]
+success_rate=len(hits)/len(testY)
+
+print("Success rate: "+str(success_rate))
+print("No of hits: "+str(len(hits)))
+print("No of test samples: "+str(len(testY)))
+
+print("Confusion matrix: ")
+print(confusion_matrix(testY, prediction))
+print("Shape of weight matrices: " + str([coef.shape for coef in ann.coefs_]))
+
+print("ANN parameters: ")
+ann.get_params()
+
+
+import matplotlib.pyplot as plt
+for x in range(len(testY)):
+    if(prediction[x]!=testY[x]):
+        plt.imshow(testX[x].reshape(8,8), cmap=plt.cm.gray_r)
+        print("prediction: "+str(prediction[x])+"    target: "+str(testY[x]))
+        plt.show()

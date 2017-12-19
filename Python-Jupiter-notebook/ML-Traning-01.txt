@@ -1,0 +1,35 @@
+import numpy as np
+import scipy as sp
+import matplotlib.pyplot as plot
+from sklearn import datasets,cluster,discriminant_analysis,decomposition,neighbors
+
+cov=[[0,1],[1,0]]
+
+cluster1=np.random.multivariate_normal([0,0], cov, 500).T
+cluster2=np.random.multivariate_normal([10,0], cov, 500).T
+cluster3=np.random.multivariate_normal([20,0], cov, 500).T
+
+target1=np.ones(len(cluster1[0]))
+target2=np.ones(len(cluster2[0]))*2
+target3=np.ones(len(cluster3[0]))*3
+
+cluster1=np.vstack([cluster1[0],cluster1[1],target1]).T
+cluster2=np.vstack([cluster2[0],cluster2[1],target2]).T
+cluster3=np.vstack([cluster3[0],cluster3[1],target3]).T
+
+cluster=np.vstack([cluster1,cluster2,cluster3])
+np.random.shuffle(cluster)
+
+train=cluster[:int(0.8*len(cluster))]
+test=cluster[int(0.8*len(cluster)):]
+
+lda=discriminant_analysis.LinearDiscriminantAnalysis()
+lda.fit(train[:,:2],train[:,2])
+predicted=lda.predict(test[:,:2])
+
+colors=["red","green","blue"]
+for i,color in zip(range(1,4),colors):
+    plot.scatter(test[predicted==i,0],test[predicted==i,1],color=color)
+plot.show()    
+    
+print(test[:,2]-predicted)
