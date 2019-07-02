@@ -1,4 +1,4 @@
-package backpropagationunsupervised;
+package laser;
 
 import similaritymatrix.Matrica;
 
@@ -10,8 +10,8 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("Backpropagation ANN");
 		boolean supervised = false;
-		BpAnn bp = new BpAnn("G:/Artificial Intelligence/Software/RomePrograms/ArtificialIntelligence-Rome/Resources/iris(4x3x150).csv", 150, 7,
-				0.5, new int[] { 4, 4, 4 }, 0.1, supervised);
+		BpAnn bp = new BpAnn("G:/Artificial Intelligence/Software/RomePrograms/ArtificialIntelligence-Rome/Resources/laser.csv", 10, 6,
+				0.7, new int[] { 6, 6, 6 }, 0.1, supervised);
 		// System.out.println("\n\nTesting dataset");
 		// Utility.printMatrix(bp.getTestingDataset());
 		
