@@ -95,10 +95,14 @@ public class Utility {
 		double[][] trainingDataset = new double[trainingSetRows][dataset[0].length];
 		double[][] testingDataset = new double[testingSetRows][dataset[0].length];
 
-		for (int y = 0; y < testingSetRows; y++) {
+		int s=0;
+		int testingPocetak = (int) Math.floor(dataset.length*trainingTestRatio);
+		int testingKraj = dataset.length;
+		for (int y = testingPocetak; y < testingKraj; y++) {
 			int rowNumber = (int) Math.floor(Math.random() * completeDataset.length);
-			testingDataset[y] = completeDataset[rowNumber];
-			completeDataset = Utility.removeRowFromMatrix(completeDataset, rowNumber);
+			testingDataset[s] = completeDataset[y-s];
+			completeDataset = Utility.removeRowFromMatrix(completeDataset, y-s);
+			s++;
 		}
 		trainingDataset = completeDataset;
 		double[][][] result = new double[2][dataset.length][dataset[0].length];
