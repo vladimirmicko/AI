@@ -1,0 +1,13 @@
+Columns:
+=========
+Therapy parameters							Therapy selection (values either 0 or 1000)
+--------------------------------			---------------------------------------------
+energy power intensity frequency 			anti-inflammatory  anti-edema   wound-healing
+
+
+Therapy parameters ranges:
+--------------------------------
+energy 		0.1-100 J  -> 0-1
+power 		0.001-1 W
+intensity 	0.001-1 W/cm2
+frequency	0-10000Hz  -> 0-1
