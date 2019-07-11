@@ -13,7 +13,7 @@ public class Utility {
 	public static double[][] loadDatasetFromFile(String csvFile, int datasetDimensionY, int datasetDimensionX) {
 		BufferedReader br = null;
 		String line = "";
-		String cvsSplitBy = ";";
+		String cvsSplitBy = "	";
 		double[][] dataset = new double[datasetDimensionY][datasetDimensionX];
 
 		try {
