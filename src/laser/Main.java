@@ -10,8 +10,10 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("Backpropagation ANN");
 		boolean supervised = false;
-		BpAnn bp = new BpAnn("D:/MyDoc/Projects/ArtificialIntelligence/Resources/laser-01.csv", 10, 6,
-				0.7, new int[] { 6, 6, 6 }, 0.1, supervised);
+
+		BpAnn bp = new BpAnn("G:/Artificial Intelligence/Software/RomePrograms/ArtificialIntelligence-Rome/Resources/laser-01.csv", 12, 7,
+				0.75, new int[] { 7, 7, 7 }, 0.1, supervised);
+
 		// System.out.println("\n\nTesting dataset");
 		// Utility.printMatrix(bp.getTestingDataset());
 		
@@ -19,7 +21,7 @@ public class Main {
 		//Utility.printMatrix(bp.getTrainingDataset());
 
 		System.out.println("\n\n---------------------------------------Training");
-		bp.training(1000);
+		bp.training(10000);
 
 		
 		if (supervised) {
@@ -54,11 +56,18 @@ public class Main {
 						+ bp.getTestingDataset()[y][0] + " " 
 						+ bp.getTestingDataset()[y][1] + " " 
 						+ bp.getTestingDataset()[y][2] + " " 
-						+ bp.getTestingDataset()[y][3] + "  ---   "	+ " Estimation: " 
+						+ bp.getTestingDataset()[y][3] + " "
+						+ bp.getTestingDataset()[y][4] + " " 
+						+ bp.getTestingDataset()[y][5] + " " 
+						+ bp.getTestingDataset()[y][6] + " " 
+						+ "  ---   "	+ " Estimation: " 
 						+ bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][0] + " "
 						+ bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][1] + " "
 						+ bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][2] + " "
-						+ bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][3]);
+						+ bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][3] + " "
+						+ bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][4] + " "
+						+ bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][5] + " "
+						+ bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][6]);
 			}
 		}
 	}
