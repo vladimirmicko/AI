@@ -10,7 +10,7 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("Backpropagation ANN");
 		boolean supervised = false;
-		BpAnn bp = new BpAnn("G:/Artificial Intelligence/Software/RomePrograms/ArtificialIntelligence-Rome/Resources/laser.csv", 10, 6,
+		BpAnn bp = new BpAnn("D:/MyDoc/Projects/ArtificialIntelligence/Resources/laser-01.csv", 10, 6,
 				0.7, new int[] { 6, 6, 6 }, 0.1, supervised);
 		// System.out.println("\n\nTesting dataset");
 		// Utility.printMatrix(bp.getTestingDataset());
