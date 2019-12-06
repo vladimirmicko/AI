@@ -1,4 +1,4 @@
-package laser;
+package LaserAutoAssociative;
 
 import similaritymatrix.Matrica;
 
