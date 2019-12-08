@@ -37,6 +37,7 @@ public class BpAnn {
 		this.testTraingRatio = testTraingRatio;
 
 		dataset = Utility.loadDatasetFromFile(datasetFilename, datasetDimensionY, datasetDimensionX);
+		dataset = Utility.loadRandom();
 		double[][][] sets = Utility.createTrainingAndTestingDataset(dataset, testTraingRatio);
 		trainingDataset = sets[0];
 		testingDataset = sets[1];
