@@ -31,6 +31,15 @@ public class Utility {
 	
 
 	public static double random (double from, double to) {
+		double energyMax=4;
+		double energyMin=1.4;
+		double powerMax=1;
+		double powerMin=0;
+		double intensityMax=1;
+		double intensityMin=0;
+		double frequencyMax=1;
+		double frequencyMin=0;
+		
 		double random=0;
 		random = Math.random()*(to-from)+from;
 
