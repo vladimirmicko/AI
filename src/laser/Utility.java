@@ -4,22 +4,11 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class Utility {
-	
-	public static double[][] loadRandom () {
-		double matrix[][] = new double[100][4];
-		for (int y = 0; y < Array.getLength(matrix); y++) {
-			double[] a = {Math.random()*1+10, Math.random()*1+10, Math.random()*1+10, Math.random()*1+10};
-			matrix[y]=a;
-		}
-		return matrix;
-	}
-	
 
 	public static double[][] loadDatasetFromFile(String csvFile, int datasetDimensionY, int datasetDimensionX) {
 		BufferedReader br = null;
