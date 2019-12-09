@@ -36,7 +36,7 @@ public class BpAnn {
 		this.datasetDimensionX = datasetDimensionX;
 		this.testTraingRatio = testTraingRatio;
 
-		dataset = Utility.loadDatasetFromFile(datasetFilename, datasetDimensionY, datasetDimensionX);
+//		dataset = Utility.loadDatasetFromFile(datasetFilename, datasetDimensionY, datasetDimensionX);
 		dataset = Utility.loadRandom();
 		double[][][] sets = Utility.createTrainingAndTestingDataset(dataset, testTraingRatio);
 		trainingDataset = sets[0];
@@ -120,6 +120,10 @@ public class BpAnn {
 	}
 
 	public void training(int nEpochs) {
+		System.out.println("*********************************************************************************");
+		Utility.printMatrix(trainingDataset);
+		System.out.println("*********************************************************************************");
+		
 		epochError=0;
 		for (int epoch = 0; epoch < nEpochs; epoch++) {
 			for (int y = 0; y < trainingDataset.length; y++) {
@@ -134,7 +138,7 @@ public class BpAnn {
 				backPropagate();
 			}
 			epochError=epochError/nEpochs;
-			System.out.println("Error on epoch: "+epoch+" = "+epochError);
+			System.out.println("Error on epoch: "+epoch+" = "+epochError + "                Input layer: "+nodes[0][0]+" "+nodes[0][1]+" "+nodes[0][2]+" "+nodes[0][3]);
 		}
 		
 	}

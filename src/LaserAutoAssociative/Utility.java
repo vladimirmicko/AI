@@ -14,13 +14,29 @@ public class Utility {
 	public static double[][] loadRandom () {
 		double matrix[][] = new double[100][4];
 		for (int y = 0; y < Array.getLength(matrix); y++) {
-			double[] a = {Math.random()*1+10, Math.random()*1+10, Math.random()*1+10, Math.random()*1+10};
+			
+//			AntiInflammatory
+			double[] a = {random(1.4,4), random(30,100), random(120,400), random(80,150)};
+//			Analgesic
+//			double[] a = {random(2,3), random(50,100), random(200,400), random(3000,10000)};
+//			Acupuncture
+//			double[] a = {random(0.5,1), random(1,3), random(8,12), random(0,20)};
+
 			matrix[y]=a;
 		}
+		
+		printMatrix(matrix);
 		return matrix;
 	}
 	
 
+	public static double random (double from, double to) {
+		double random=0;
+		random = Math.random()*(to-from)+from;
+
+		return random;
+	}
+	
 	public static double[][] loadDatasetFromFile(String csvFile, int datasetDimensionY, int datasetDimensionX) {
 		BufferedReader br = null;
 		String line = "";

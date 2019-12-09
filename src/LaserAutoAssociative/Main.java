@@ -12,9 +12,8 @@ public class Main {
 		boolean supervised = false;
 
 //		String filePath = "G:/Artificial Intelligence/Software/RomePrograms/ArtificialIntelligence-Rome/Resources/laser-01.csv";
-		String filePath = "G:/Artificial Intelligence/Software/RomePrograms/ArtificialIntelligence-Rome/Resources/laser-02-AntiEdema.csv";
-//		String filePath = "D:/MyDoc/Projects/ArtificialIntelligence/Resources/laser-01.csv";
-//		String datasetFilename, int datasetDimensionY, int datasetDimensionX, double testTraingRatio,int[] numberOfLayerNodes, double learningCoeffitient, boolean supervised
+		String filePath = "D:/MyDoc/Projects/ArtificialIntelligence/Resources/laser-01.csv";
+//		BpAnn parameter:  String datasetFilename, int datasetDimensionY, int datasetDimensionX, double testTraingRatio,int[] numberOfLayerNodes, double learningCoeffitient, boolean supervised
 //		BpAnn bp = new BpAnn(filePath, 12, 7, 0.75, new int[] { 7, 7, 7 }, 0.1, supervised);
 		BpAnn bp = new BpAnn(filePath, 18, 4, 1, new int[] { 4, 4, 4 }, 0.1, supervised);
 
@@ -56,9 +55,15 @@ public class Main {
 		if (!supervised) {
 			System.out.println("\n\n---------------------------------------Testing unsupervised - auto-associative backpropagation");
 			for (int y = 0; y < 100; y++) {
-				double[] a = {Math.random()*1+10, Math.random()*1+10, Math.random()*1+10, Math.random()*1+10};
+//				AntiInflammatory
+				double[] a = {Utility.random(1.4,4), Utility.random(30,100), Utility.random(120,400), Utility.random(80,150)};
+//				Analgesic
+//				double[] a = {random(2,3), random(50,100), random(200,400), random(3000,10000)};
+//				Acupuncture
+//				double[] a = {random(0.5,1), random(1,3), random(8,12), random(0,20)};
 				bp.classify(a);
 				System.out.println("" + y + ": " 
+						+ "In: "+a[0]+"  "+a[1]+"  "+a[2]+"  "+a[3] +"     Out: "
 						+ bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][0] + " "
 						+ bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][1] + " "
 						+ bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][2] + " "

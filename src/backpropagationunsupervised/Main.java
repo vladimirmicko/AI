@@ -10,8 +10,9 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("Backpropagation ANN");
 		boolean supervised = false;
-		BpAnn bp = new BpAnn("G:/Artificial Intelligence/Software/RomePrograms/ArtificialIntelligence-Rome/Resources/iris(4x3x150).csv", 150, 7,
-				0.5, new int[] { 4, 4, 4 }, 0.1, supervised);
+//		String filePath = "G:/Artificial Intelligence/Software/RomePrograms/ArtificialIntelligence-Rome/Resources/iris(4x3x150).csv";
+		String filePath = "D:/MyDoc/Projects/ArtificialIntelligence/Resources/iris(4x3x150).csv";
+		BpAnn bp = new BpAnn(filePath, 150, 7,	0.5, new int[] { 4, 4, 4 }, 0.1, supervised);
 		// System.out.println("\n\nTesting dataset");
 		// Utility.printMatrix(bp.getTestingDataset());
 		
