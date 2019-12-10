@@ -56,13 +56,17 @@ public class Main {
 			System.out.println("\n\n---------------------------------------Testing unsupervised - auto-associative backpropagation");
 //			for (int y = 0;  y < bp.getTestingDataset().length; y++) {
 			for (int y = 0;  y < 100; y++) {	
+
 //				AntiInflammatory
-				double[] a = {Utility.normEnergy(Utility.random(4.99,5.01)), Utility.normPower(Utility.random(30,100)), Utility.normIntensity(Utility.random(120,400)), Utility.normFrequency(Utility.random(80,150))};
+//				double[] a = {Utility.normEnergy(Utility.random(1.4,4)), Utility.normPower(Utility.random(30,100)), Utility.normIntensity(Utility.random(120,400)), Utility.normFrequency(Utility.random(80,150))};
+//				double[] a = {Utility.normEnergy(Utility.random(4.99,5.01)), Utility.normPower(Utility.random(30,100)), Utility.normIntensity(Utility.random(120,400)), Utility.normFrequency(Utility.random(80,150))};
+
 //				Analgesic
 //				double[] a = {Utility.normEnergy(Utility.random(2,3)), Utility.normPower(Utility.random(50,100)), Utility.normIntensity(Utility.random(200,400)), Utility.normFrequency(Utility.random(3000,10000))};
+				double[] a = {Utility.normEnergy(Utility.random(4.99,5.01)), Utility.normPower(Utility.random(50,100)), Utility.normIntensity(Utility.random(200,400)), Utility.normFrequency(Utility.random(3000,10000))};				
 //				Acupuncture
-//				double[] a = {random(0.5,1), random(1,3), random(8,12), random(0,20)};
 //				double[] a = {Utility.normEnergy(Utility.random(0.5,1)), Utility.normPower(Utility.random(1,3)), Utility.normIntensity(Utility.random(8,12)), Utility.normFrequency(Utility.random(0,20))};
+				
 				bp.classify(a);
 				
 //				bp.classify(bp.getTestingDataset()[y]);

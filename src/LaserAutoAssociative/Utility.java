@@ -12,12 +12,29 @@ import java.util.List;
 public class Utility {
 	
 	public static double[][] loadRandom () {
-		double matrix[][] = new double[100][4];
-		for (int y = 0; y < Array.getLength(matrix); y++) {
-//			AntiInflammatory
-			double[] a = {normEnergy(Utility.random(1.4,4)), normPower(Utility.random(30,100)), normIntensity(Utility.random(120,400)), normFrequency(Utility.random(80,150))};
+		double matrix[][] = new double[200][4];
+		int y=0;
+//		AntiInflammatory		
+//		for (int x = 0; y < 100; y++) {
+//			double[] a = {Utility.normEnergy(Utility.random(1.4,4)), Utility.normPower(Utility.random(30,100)), Utility.normIntensity(Utility.random(120,400)), Utility.normFrequency(Utility.random(80,150))};			
+//			matrix[y]=a;
+//			y++;
+//		}
+		
+//		Analgesic
+		for (int x = 0; y < 100; y++) {
+			double[] a = {Utility.normEnergy(Utility.random(2,3)), Utility.normPower(Utility.random(50,100)), Utility.normIntensity(Utility.random(200,400)), Utility.normFrequency(Utility.random(3000,10000))};			
 			matrix[y]=a;
+			y++;
 		}
+
+//		Acupuncture		
+//		for (int x = 0; y < 100; y++) {
+//			double[] a = {Utility.normEnergy(Utility.random(0.5,1)), Utility.normPower(Utility.random(1,3)), Utility.normIntensity(Utility.random(8,12)), Utility.normFrequency(Utility.random(0,20))};
+//			matrix[y]=a;
+//			y++;
+//		}
+
 		return matrix;
 	}
 	
