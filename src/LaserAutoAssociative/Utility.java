@@ -14,35 +14,84 @@ public class Utility {
 	public static double[][] loadRandom () {
 		double matrix[][] = new double[100][4];
 		for (int y = 0; y < Array.getLength(matrix); y++) {
-			
 //			AntiInflammatory
-			double[] a = {random(1.4,4), random(30,100), random(120,400), random(80,150)};
-//			Analgesic
-//			double[] a = {random(2,3), random(50,100), random(200,400), random(3000,10000)};
-//			Acupuncture
-//			double[] a = {random(0.5,1), random(1,3), random(8,12), random(0,20)};
-
+			double[] a = {normEnergy(Utility.random(1.4,4)), normPower(Utility.random(30,100)), normIntensity(Utility.random(120,400)), normFrequency(Utility.random(80,150))};
 			matrix[y]=a;
 		}
-		
 		printMatrix(matrix);
 		return matrix;
 	}
 	
+	
+	public static double valEnergy (double val) {
+		double to=10;
+		double from=0;
+		val=val*(to-from)+from;
+		return val;
+	}
 
+	public static double normEnergy (double val) {
+		double to=10;
+		double from=0;
+		val=normalize(val, from, to);
+		return val;
+	}
+
+	public static double valPower (double val) {
+		double to=100;
+		double from=0;
+		val=val*(to-from)+from;
+		return val;
+	}
+	
+	public static double normPower (double val) {
+		double to=100;
+		double from=0;
+		val=normalize(val, from, to);
+		return val;
+	}
+
+	
+	public static double valIntensity (double val) {
+		double to=400;
+		double from=0;
+		val=val*(to-from)+from;
+		return val;
+	}
+	
+	public static double normIntensity (double val) {
+		double to=400;
+		double from=0;
+		val=normalize(val, from, to);
+		return val;
+	}
+	
+	public static double valFrequency (double val) {
+		double to=10000;
+		double from=0;
+		val=val*(to-from)+from;
+		return val;
+	}
+	
+
+	public static double normFrequency (double val) {
+		double to=10000;
+		double from=0;
+		val=normalize(val, from, to);
+		return val;
+	}
+	
+
+	public static double normalize (double val, double from, double to) {
+		val=(val-from)/(to-from);
+		return val;
+	}
+
+	
+	
 	public static double random (double from, double to) {
-		double energyMax=4;
-		double energyMin=1.4;
-		double powerMax=1;
-		double powerMin=0;
-		double intensityMax=1;
-		double intensityMin=0;
-		double frequencyMax=1;
-		double frequencyMin=0;
-		
 		double random=0;
 		random = Math.random()*(to-from)+from;
-
 		return random;
 	}
 	

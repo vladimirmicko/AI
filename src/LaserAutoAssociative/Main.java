@@ -54,20 +54,21 @@ public class Main {
 
 		if (!supervised) {
 			System.out.println("\n\n---------------------------------------Testing unsupervised - auto-associative backpropagation");
-			for (int y = 0; y < 100; y++) {
+			for (int y = 0; y < 10; y++) {
 //				AntiInflammatory
-				double[] a = {Utility.random(1.4,4), Utility.random(30,100), Utility.random(120,400), Utility.random(80,150)};
+				double[] a = {Utility.normEnergy(Utility.random(4.99,5.01)), Utility.normPower(Utility.random(30,100)), Utility.normIntensity(Utility.random(120,400)), Utility.normFrequency(Utility.random(80,150))};
 //				Analgesic
-//				double[] a = {random(2,3), random(50,100), random(200,400), random(3000,10000)};
+//				double[] a = {Utility.normEnergy(Utility.random(2,3)), Utility.normPower(Utility.random(50,100)), Utility.normIntensity(Utility.random(200,400)), Utility.normFrequency(Utility.random(3000,10000))};
 //				Acupuncture
 //				double[] a = {random(0.5,1), random(1,3), random(8,12), random(0,20)};
+//				double[] a = {Utility.normEnergy(Utility.random(0.5,1)), Utility.normPower(Utility.random(1,3)), Utility.normIntensity(Utility.random(8,12)), Utility.normFrequency(Utility.random(0,20))};				
 				bp.classify(a);
 				System.out.println("" + y + ": " 
 						+ "In: "+a[0]+"  "+a[1]+"  "+a[2]+"  "+a[3] +"     Out: "
-						+ bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][0] + " "
-						+ bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][1] + " "
-						+ bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][2] + " "
-						+ bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][3]);
+						+ Utility.valEnergy(bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][0]) + " "
+						+ Utility.valPower(bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][1]) + " "
+						+ Utility.valIntensity(bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][2]) + " "
+						+ Utility.valFrequency(bp.getNodes()[bp.getNumberOfLayerNodes().length - 1][3]));
 			}
 		}
 		
