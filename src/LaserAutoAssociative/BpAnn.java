@@ -120,15 +120,14 @@ public class BpAnn {
 	}
 
 	public void training(int nEpochs) {
-		System.out.println("*********************************************************************************");
-		Utility.printMatrix(trainingDataset);
-		System.out.println("*********************************************************************************");
-		
 		epochError=0;
 		for (int epoch = 0; epoch < nEpochs; epoch++) {
-			for (int y = 0; y < trainingDataset.length; y++) {
-				currentDatasetRow = y;
-				nodes[0] = trainingDataset[y];
+			for (int yyy = 0; yyy < trainingDataset.length; yyy++) {
+				currentDatasetRow = yyy;
+				nodes[0] = trainingDataset[yyy];
+				if(epoch==0) {
+					System.out.println(""+yyy+" Input: "+Utility.valEnergy(nodes[0][0])+" "+Utility.valPower(nodes[0][1])+" "+Utility.valIntensity(nodes[0][2])+" "+Utility.valFrequency(nodes[0][3]));
+				}
 				for (int layerNumber = 1; layerNumber < numberOfLayerNodes.length-1; layerNumber++) {
 					calculateHiddenLayer(layerNumber);
 				}
@@ -138,7 +137,7 @@ public class BpAnn {
 				backPropagate();
 			}
 			epochError=epochError/nEpochs;
-			System.out.println("Error on epoch: "+epoch+" = "+epochError + "                Input layer: "+nodes[0][0]+" "+nodes[0][1]+" "+nodes[0][2]+" "+nodes[0][3]);
+			System.out.println("Error on epoch: "+epoch+" = "+epochError);
 		}
 		
 	}

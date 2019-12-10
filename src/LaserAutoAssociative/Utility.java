@@ -18,7 +18,6 @@ public class Utility {
 			double[] a = {normEnergy(Utility.random(1.4,4)), normPower(Utility.random(30,100)), normIntensity(Utility.random(120,400)), normFrequency(Utility.random(80,150))};
 			matrix[y]=a;
 		}
-		printMatrix(matrix);
 		return matrix;
 	}
 	
@@ -143,6 +142,14 @@ public class Utility {
 		}
 	}
 
+	public static void printArray(double[] array) {
+		for (int x = 0; x < array.length; x++) {
+			System.out.print("" + array[x] + ", ");
+		}
+		System.out.println();
+
+	}
+	
 	public static double[][] copyMatrix(double[][] oldMatrix) {
 		double[][] newMatrix = new double[oldMatrix.length][oldMatrix[0].length];
 
